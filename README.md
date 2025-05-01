@@ -38,9 +38,9 @@
 
 ---
 
-## 📂 Executables（Windows 可执行文件索引）
+## 📂 Executables（exe）
 
-（此处你可以列出 .exe 文件及说明）
+[Typora 激活](https://github.com/L1ne-cd/Typora_Unlocker) 激活Typora，目前版本支持| 1.0.0 - 1.9.5 |
 
 ---
 
