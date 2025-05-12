@@ -32,6 +32,16 @@
 
 ---
 
+## 📂 Project（项目类内容索引）
+
+### 网络类
+
+**代理转发神器** [glider](https://github.com/nadoo/glider) | 介绍
+
+（此处你可以列出脚本文件及说明）
+
+------
+
 ## 📂 APKs（Android 应用索引）
 
 （此处你可以列出 APK 文件及说明）
@@ -40,16 +50,15 @@
 
 ## 📂 Executables（exe）
 
-<<<<<<< HEAD
 [Typora 激活](https://github.com/L1ne-cd/Typora_Unlocker) 激活Typora，目前版本支持| 1.0.0 - 1.9.5 |    [个人备份](https://github.com/liyxie/my_collection/tree/main/executables/typora)
-
-[windowns 微信多开](https://github.com/liyxie/my_collection/tree/main/executables/WeChat)
 
 ---
 
 ## 📂 Tools（小工具及源码索引）
 
-（此处你可以列出工具说明）
+[windows 微信多开](https://github.com/liyxie/my_collection/tree/main/executables/WeChat)
+
+
 
 ---
 
