@@ -36,7 +36,7 @@
 
 ### 网络类
 
-**代理转发神器** [glider](https://github.com/nadoo/glider) | 介绍
+**代理转发神器** [glider](https://github.com/nadoo/glider) | [介绍](https://github.com/liyxie/my_collection/blob/main/project/glider.md)
 
 （此处你可以列出脚本文件及说明）
 
@@ -62,6 +62,6 @@
 
 ---
 
-## 📂 Docs（文档说明索引）
+## 📂 Blogs（博客文章）
 
 （此处你可以列出文档内容）
