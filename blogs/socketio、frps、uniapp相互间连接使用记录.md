@@ -194,3 +194,11 @@ module.exports = {
 ## 参考文章
 
 [简介 — Flask-SocketIO 文档](https://flask-socketio.readthedocs.io/en/latest/intro.html#version-compatibility)
+
+[微信小程序使用socketio连接的避坑指南.以及成功案例(微信开发者工具(前端))_微信小程序 socketio-CSDN博客](https://blog.csdn.net/m0_64974617/article/details/142263724)
+
+[GitHub - lp476793590/socket.io-client-uni-app: uniapp上使用的socket.io-client](https://github.com/lp476793590/socket.io-client-uni-app)
+
+[GitHub - guyue88/hyoga-uni-socket.io: 适用于uni-app的socket.io封装，可用于uni-app、微信小程序](https://github.com/guyue88/hyoga-uni-socket.io)
+
+[Uniapp 中如何使用 Socket | Personal Hobbies](https://rich1e.xyz/uniapp/how-to-use-socket-in-uniapp/)
