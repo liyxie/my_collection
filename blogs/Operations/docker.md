@@ -17,3 +17,6 @@ docker info | grep -i registry
 
 ```
 
+sudo install -m 0755 -d /etc/apt/keyrings curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+docker run -d -it --name presenton -p 5001:80 -v "./user_data:/app/user_data" ghcr.io/presenton/presenton:latest
