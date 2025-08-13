@@ -74,3 +74,4 @@ spring:
 
 主要填 `api-key` `model` 就行
 
+![image-20250807181329736](E:\MyWenJian\my_collection\Spring Ai 1.0.0GA 简单使用.assets\image-20250807181329736.png)
