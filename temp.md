@@ -249,3 +249,48 @@ if __name__ == "__main__":
     print("=" * 60)
 ```
 
+```python
+			async def generate():
+                    try:
+            		······
+                        yield {
+                            "event": "start",
+                            "data": json.dumps({
+                                "total_files": len(files_data),
+                                "database_name": database_name
+                            }, ensure_ascii=False)
+                        }
+                        ······
+                                yield {
+                                    "event": "progress",
+                                    "data": json.dumps({
+                                        "progress": progress,
+                                        "current_file": index + 1,
+                                        "total_files": len(files_data),
+                                        "filename": filename,
+                                        "status": "importing",
+                                        "message": f"正在导入数据库: {filename}"
+                                    }, ensure_ascii=False)
+                                }
+                                ······
+                        yield {
+                            "event": "complete",
+                            "data": json.dumps({
+                                "progress": 100,
+                                "results": results
+                            }, ensure_ascii=False)
+                        }
+
+                    except HTTPException as e:
+                        yield {
+                            "event": "error",
+                            "data": json.dumps({"error": e.detail}, ensure_ascii=False)
+                        }
+                    except Exception as e:
+                        yield {
+                            "event": "error",
+                            "data": json.dumps({"error": f"批量导入文件失败: {str(e)}"}, ensure_ascii=False)
+                        }
+                return EventSourceResponse(generate())
+```
+
