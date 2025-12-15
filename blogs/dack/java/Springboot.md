@@ -97,3 +97,24 @@ Spring官方建项目添加lombok依赖时通常会自动导入lombok插件，�
     </build>
 ```
 
+## @Value和@Bean的执行顺序问题
+
+```java
+// 无法在静态字段上使用 @Value 
+@Value("${minio.endpoint}")
+private static String endpoint;
+
+@Configuration
+public class MyConfig {
+    @Value("${minio.endpoint}")
+    private String endpoint;  // 可能为 null
+    @Bean
+    public MinioClient minioClient() {
+        System.out.println(endpoint);  // ❌ 可能输出 null
+        return MinioClient.builder()
+            .endpoint(endpoint)
+            .build();
+    }
+}
+```
+

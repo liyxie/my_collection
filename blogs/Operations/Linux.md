@@ -43,6 +43,10 @@ sudo ss -lntup | grep 8000
 ```bash
 sudo lsof -i :<端口号>	
 
+```
 
+```bash
+# 追踪用户和详情
+ps -f -p PID
 ```
 
