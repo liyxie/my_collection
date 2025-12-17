@@ -118,3 +118,35 @@ public class MyConfig {
 }
 ```
 
+## XML中 IN 写法注意
+
+```java
+Page<UserVo> getUserListByAll(@Param("userReqDto") UserReqDto userReqDto, @Param("orgIds") List<Long> orgIds);
+```
+
+```xml
+    <select id="getUserListByAll" resultType="com.dc.dc_project.model.vo.UserVo">
+        SELECT
+        u.id,
+		······
+        LEFT JOIN sys_org o ON spo.org_id = o.id
+        <where>
+			······
+            <if test="orgIds != null">
+                AND o.id in (#{orgIds})
+            </if>
+            <!-- 以上写法是错误，无法识别到List-->
+            and u.is_deleted = 0
+        </where>
+    </select>
+
+<!-- 正确-->
+<if test="orgIds != null">
+    o.id in
+    <foreach item="item" collection="orgIds" separator="," open="(" close=")">
+         #{item}
+    </foreach>
+</if>
+
+```
+
