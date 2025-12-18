@@ -1,0 +1,24 @@
+{
+  "mcpServers": {
+    // "fetch": {
+    //   "command": "uvx",
+    //   "args": ["mcp-server-fetch"],
+    //   "env": {},
+    //   "disabled": true,
+    //   "autoApprove": []
+    // },
+    "fetch": {
+      "type": "streamable_http",
+      "url": "https://mcp.api-inference.modelscope.net/18db0980ae8343/mcp",
+      "autoApprove": [
+        "fetch"
+      ]
+    }
+  }
+  // "mcpServers": {
+  //   "fetch": {
+  //     "type": "streamable_http",
+  //     "url": "https://mcp.api-inference.modelscope.net/18db0980ae8343/mcp"
+  //   }
+  // }
+}

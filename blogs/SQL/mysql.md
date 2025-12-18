@@ -148,3 +148,18 @@ sudo tail -n 50 /var/log/mysql/error.log
 sudo cat /var/log/mysql/error.log | tail -n 50
 
 ```
+
+
+
+## mysqldump在windows上导出数据中文乱码
+
+```bash
+# 错误
+mysqldump -u root -p --default-character-set=utf8 --hex-blob {database_name}.* > data.sql
+# 在windows下使用 PowerShell，重定向导出SQL文件时，会变成UTF-16编码，不能被MySQL正确加载
+# 改用 --result-file=
+# 强制指定字符集 --default-character-set=utf8
+mysqldump -u root -p --default-character-set=utf8 --hex-blob {database_name}.* --result-file=D:\xxx.sql
+mysqldump -u root -p --default-character-set=utf8 --hex-blob {database_name} --tables table_1 table_2 --result-fil 
+```
+
