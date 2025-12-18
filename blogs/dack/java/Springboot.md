@@ -97,3 +97,56 @@ Spring官方建项目添加lombok依赖时通常会自动导入lombok插件，�
     </build>
 ```
 
+## @Value和@Bean的执行顺序问题
+
+```java
+// 无法在静态字段上使用 @Value 
+@Value("${minio.endpoint}")
+private static String endpoint;
+
+@Configuration
+public class MyConfig {
+    @Value("${minio.endpoint}")
+    private String endpoint;  // 可能为 null
+    @Bean
+    public MinioClient minioClient() {
+        System.out.println(endpoint);  // ❌ 可能输出 null
+        return MinioClient.builder()
+            .endpoint(endpoint)
+            .build();
+    }
+}
+```
+
+## XML中 IN 写法注意
+
+```java
+Page<UserVo> getUserListByAll(@Param("userReqDto") UserReqDto userReqDto, @Param("orgIds") List<Long> orgIds);
+```
+
+```xml
+    <select id="getUserListByAll" resultType="com.dc.dc_project.model.vo.UserVo">
+        SELECT
+        u.id,
+		······
+        LEFT JOIN sys_org o ON spo.org_id = o.id
+        <where>
+			······
+            <if test="orgIds != null">
+                AND o.id in (#{orgIds})
+            </if>
+            <!-- 以上写法是错误，无法识别到List-->
+            and u.is_deleted = 0
+        </where>
+    </select>
+
+<!-- 正确-->
+<if test="orgIds != null">
+    o.id in
+    <foreach item="item" collection="orgIds" separator="," open="(" close=")">
+         #{item}
+    </foreach>
+</if>
+
+```
+
