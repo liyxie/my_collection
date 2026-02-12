@@ -163,3 +163,4 @@ mysqldump -u root -p --default-character-set=utf8 --hex-blob {database_name}.* -
 mysqldump -u root -p --default-character-set=utf8 --hex-blob {database_name} --tables table_1 table_2 --result-fil 
 ```
 
+​	
