@@ -63,6 +63,33 @@ docker system prune -a -f --volumes
 
 
 
+## 拷贝导入镜像
+
+```bash
+# 在当前目录执行以下命令，将镜像保存为一个 tar 文件：
+docker save -o postgres_latest.tar postgres:latest
+
+# 创建一个干净的部署文件夹并打包
+# 创建打包目录
+mkdir pgsql_offline
+# 移动镜像文件到目录中
+mv postgres_latest.tar pgsql_offline/
+# 复制 docker-compose.yml 到目录中
+cp docker-compose.yml pgsql_offline/
+# 将整个目录打成压缩包
+tar -czvf pgsql_offline.tar.gz pgsql_offline/
+```
+
+```bash
+# 拷入压缩包，解压
+tar -xzvf pgsql_offline.tar.gz
+cd pgsql_offline
+# 手动加载刚才拷过来的镜像包
+docker load -i postgres_latest.tar
+# 启动
+docker compose up -d
+```
+
 
 
 ## 安装docker

@@ -228,7 +228,7 @@ ALTER PROFILE DEFAULT LIMIT FAILED_LOGIN_ATTEMPTS UNLIMITED;
 
 ```
 
-问题
+## 问题
 
 **数据库未启动**
 
@@ -242,7 +242,7 @@ SELECT value FROM v$parameter WHERE name = 'service_names';
 
 启动失败，内存参数（SGA）太小
 
-```
+```bash
 SQL> STARTUP;
 ORA-00821: Specified value of sga_target 500M is too small, needs to be at least 1144M
 ```
