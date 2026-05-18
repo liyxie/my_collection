@@ -4,7 +4,11 @@
 
 修改端口后，需要在宿主机的防火墙中开放对应的端口，在宿主机的 powershell 中以管理员权限执行如下命令：
 
+```
 New-NetFirewallRule -DisplayName '"Allow SSH on Port xxxxx"' -Direction Inbound -Protocol TCP -LocalPort xxxxx -Action Allow
+```
+
+
 
 ## 修改 wsl2 网络模式
 
@@ -17,22 +21,36 @@ wsl2 需要通过获取主机 ip 访问 windows 应用
 
 wsl2 配置文件路径为 %UserProfile%/.wslconfig，修改为以下内容：
 
+```
 [experimental]
 networkingMode=mirrored
 dnsTunneling=true
 firewall=true
 autoProxy=true
+```
+
 上述配置中还启用了自动代理、防火墙和 dns 隧道。修改完成后，重启 wsl 即可应用该配置：
 
+```
 wsl --shutdown
 wsl
+```
+
+
 
 ## 显卡驱动查不到
 
+ssh查不到驱动，本机可以情况
+
+```
 which nvidia-smi
+```
 
 在标准的现代 WSL2 环境中，通常会输出： `/usr/lib/wsl/lib/nvidia-smi`
 
 建立软链接 
 
+```
 sudo ln -s /usr/lib/wsl/lib/nvidia-smi /usr/bin/nvidia-smi
+```
+
