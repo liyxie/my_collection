@@ -8,8 +8,7 @@
 
 4.在记事本中输入以下内容：
 
-\```batch
-
+```
 @echo off
 
 pushd "%~dp0"
@@ -21,6 +20,7 @@ dir /b %systemroot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools
 for /f %%i in ('findstr /i . gp.txt 2^>nul') do [dism](https://zhida.zhihu.com/search?content_id=240770838&content_type=Article&match_order=1&q=dism&zd_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ6aGlkYV9zZXJ2ZXIiLCJleHAiOjE3ODAyMTkwNDgsInEiOiJkaXNtIiwiemhpZGFfc291cmNlIjoiZW50aXR5IiwiY29udGVudF9pZCI6MjQwNzcwODM4LCJjb250ZW50X3R5cGUiOiJBcnRpY2xlIiwibWF0Y2hfb3JkZXIiOjEsInpkX3Rva2VuIjpudWxsfQ.MlGsD_zhfEOBi7S6k9hvXVfCVp5_fzfpLYmLBo8SllE&zhida_source=entity) /online /norestart /add-package:"%systemroot%\servicing\Packages\%%i"
 
 pause
+```
 
 5.保存记事本，文件名设为【gpedit.bat`】，保存类型选择【所有文件】
 
