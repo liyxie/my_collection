@@ -2,6 +2,38 @@
 
 
 
+## 部署
+
+```bash
+# 拉去镜像
+docker pull postgres:latest
+```
+
+docker-compose.yml
+
+```yaml
+version: '3'
+services:
+  postgres:
+    image: library/postgres:latest
+    container_name: pg-service
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: mydbi
+      TZ: Asia/Shanghai
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data:/var/lib/postgresql
+      - ./logs:/var/log/postgresql
+```
+
+默认已开启远程登录
+
+
+
 ## MySQL 切换 PostgreSQL坑
 
 ### 切换流程

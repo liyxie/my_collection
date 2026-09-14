@@ -21,6 +21,12 @@ mv -b file.txt /home/user/docs/
 
 
 
+```
+sudo chown -R username foldername
+```
+
+
+
 ## 运维
 
 ### `ss` 命令
@@ -48,5 +54,28 @@ sudo lsof -i :<端口号>
 ```bash
 # 追踪用户和详情
 ps -f -p PID
+```
+
+
+
+### 后台运行
+
+```
+# 后台运行，输出重定向到 nohup.out
+nohup ./your_program &
+# 后台运行，自定义输出文件
+nohup ./your_program > output.log 2>&1 &
+# 后台运行，不生成 nohup.out
+nohup ./your_program > /dev/null 2>&1 &
+
+# 创建命名窗口
+tmux new -s myapp
+# 断开：按 Ctrl+B，然后按 D
+# 恢复
+tmux attach -t myapp
+# 列出所有窗口
+tmux ls
+# 关闭窗口
+tmux kill-session -t myapp
 ```
 
