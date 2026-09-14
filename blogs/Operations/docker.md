@@ -13,7 +13,7 @@ sudo systemctl restart docker
 ### 查看是否使用配置文件镜像
 
 ```bash
-docker info | grep -i registry
+    docker info | grep -i registry
 
 ```
 
@@ -61,3 +61,82 @@ docker system prune -a -f --volumes
 
 ```
 
+
+
+
+
+## 安装docker
+
+使用命令 `sudo apt-get update`（对于Debian/Ubuntu）或 `sudo yum update`（对于CentOS）。
+
+安装必要的依赖包，例如 `apt-transport-https` 和 `ca-certificates`，使用命令 `sudo apt-get install apt-transport-https ca-certificates curl software-properties-common`
+
+添加Docker的官方GPG密钥：使用命令 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -。
+
+
+
+### 离线安装
+
+Ubuntu 版本假设是 **20.04 / 22.04**（不同版本包不同）
+
+访问官方仓库（有网机器）：
+
+```
+https://download.docker.com/linux/ubuntu/dists/
+```
+
+以 **22.04 (jammy)** 为例，进入：
+
+```
+jammy/pool/stable/amd64/
+```
+
+下载以下 **4 个核心包**（版本号以当时最新为准）：
+
+```
+containerd.io_*.deb
+docker-ce_*.deb
+docker-ce-cli_*.deb
+docker-buildx-plugin_*.deb
+docker-compose-plugin_*.deb   （建议一起下）
+```
+
+📦 下载后拷贝到 U 盘 / scp 到离线服务器，比如：
+
+```
+/opt/docker-offline/
+```
+
+------
+
+#### 2️⃣ 在离线 Ubuntu 服务器安装
+
+```
+cd /opt/docker-offline
+sudo dpkg -i *.deb
+```
+
+如果出现依赖错误：
+
+```
+sudo apt --fix-broken install
+```
+
+（⚠️ `--fix-broken` 不会联网，只是整理依赖）
+
+------
+
+#### 3️⃣ 启动并验证 Docker
+
+```
+sudo systemctl enable docker
+sudo systemctl start docker
+docker version
+```
+
+非 root 用户使用 Docker（你服务器上大概率需要）：
+
+```
+sudo usermod -aG docker $USER
+# 重新登录生效
+```

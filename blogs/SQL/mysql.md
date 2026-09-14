@@ -119,11 +119,26 @@ FLUSH PRIVILEGES;
 
 修改用户认证插件为 mysql_native_password（推荐）
 
+```
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+```
+
 
 
 ### Access denied for user 'railway'@'%' to database 'railway'
 
 **原因**：用户未开启远程访问
+
+```
+USE mysql;
+SELECT user, host, plugin FROM user WHERE user = 'root';
+
+UPDATE user SET host = '%' WHERE user = 'root';
+
+FLUSH PRIVILEGES;
+```
+
+
 
 ### 重启报错
 
